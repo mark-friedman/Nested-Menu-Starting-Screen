@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- Names have been changed to clarify which are nemes
+     Comments have been added to clarify actions -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Toolbox Customization Codelab</title>
+    <script src="https://unpkg.com/blockly@11/blockly.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="index.css">  
+    <script src="StartingScreen.js"></script>
+    <script src="Simulator.js"></script>
+    <script src="ForwardBackward.js"></script>
+    <script src="TurnLeftRight.js"></script>
+    <style>
+      body {
+        background-color: #ffffff;
+        font-family: sans-serif;
+        overflow: hidden;
+      }
+      h1 {
+        font-weight: normal;
+        font-size: 140%;
+        margin: 10px;
+      }
+      #blocklyDiv {
+        float: bottom;
+        height: 50%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id="blocklyDiv"></div>
+      <button class="mdl-button" id="move"></button>
+      <button class="button mdl-color--red-500">Move</button>
+    </main>
+    <script>      
+      const nameToolbox = {
+        // "categoryToolbox" is a Toolbox
+        "kind": "categoryToolbox",
+        "contents": [
+          // Main menu
+          {
+            // "category" is a Menu item
+            "kind": "category",
+            // The word "Simulator" is displayed on the Main menu
+            "name": "Simulator",
+            "contents": [
+              {
+                // "block" creates a block on the screen
+                "kind": "block",
+                // "typeSimulator" is the block name found in a .js file
+                "type": "typeSimulator"
+              },
+            ]
+          },
+          // Main menu
+          {
+            // "category" is a Menu item 
+            "kind": "category",
+            // The word "Movement" is displayed on the Main menu
+            "name": "Movement",
+            "contents": [
+              // Nested menu
+              {                
+                // "category" is a Menu item 
+                "kind": "category",
+                // The words "Forward or backward" are displayed on the Nested menu
+                "name": "Forward or backward",
+                "contents": [
+                  {
+                    // "block" creates a block on the screen
+                    "kind": "block", 
+                    // "typeForwardBackward" is the block name found in a .js file
+                    "type": "typeForwardBackward"
+                  }
+                ]
+              },
+              // Nested menu
+              {                
+                // "category" is a Menu item
+                "kind": "category",
+                // The words "Turn left or right" are displayed on the Nested menu
+                "name": "Turn left or right",
+                "contents": [
+                  {
+                    // "block" creates a block on the screen
+                    "kind": "block",
+                    // "typeTurnLeftRight" is the block name found in a .js file
+                    "type": "typeTurnLeftRight"
+                  }
+                ]
+              }
+            ]
+          },
+        ]
+      }
+      const workspace = Blockly.inject('blocklyDiv', {toolbox: nameToolbox});
+      // Place a block on the starting screen
+      Blockly.serialization.blocks.append({
+          type: 'typeStartingScreen',
+          // do not allow it to be deleted
+          deletable: false,
+          movable: false,
+          editable: false,
+      }, workspace);
+      workspace.addChangeListener(Blockly.Events.disableOrphans);
+      const jsCode = javascript.javascriptGenerator.workspaceToCode(workspace);
+    </script>
+  </body>
+</html>
