@@ -7,36 +7,24 @@
     <title>Toolbox Customization Codelab</title>
     <script src="https://unpkg.com/blockly@11/blockly.min.js"></script>
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
-    <link rel="stylesheet" href="index.css">  
+    <link rel="stylesheet" href="index.css">
     <script src="StartingScreen.js"></script>
     <script src="Simulator.js"></script>
     <script src="ForwardBackward.js"></script>
     <script src="TurnLeftRight.js"></script>
-    <style>
-      body {
-        background-color: #ffffff;
-        font-family: sans-serif;
-        overflow: hidden;
-      }
-      h1 {
-        font-weight: normal;
-        font-size: 140%;
-        margin: 10px;
-      }
-      #blocklyDiv {
-        float: bottom;
-        height: 50%;
-        width: 100%;
-      }
-    </style>
   </head>
   <body>
     <main>
-      <div id="blocklyDiv"></div>
-      <button class="mdl-button" id="move"></button>
-      <button class="button mdl-color--red-500">Move</button>
+      <div id="blocksAndButtons" class="split left">
+        <div id="blocklyDiv"></div>
+        <button class="button mdl-color--red-500">Move</button>
+      </div>
+      <div id="canvasContainer" class="split right">
+        <canvas id="canvas" width="900" height="520"></canvas>
+      </div>
+      <script src="cars/image.js"></script>
     </main>
-    <script>      
+    <script>
       const nameToolbox = {
         // "categoryToolbox" is a Toolbox
         "kind": "categoryToolbox",
@@ -58,28 +46,28 @@
           },
           // Main menu
           {
-            // "category" is a Menu item 
+            // "category" is a Menu item
             "kind": "category",
             // The word "Movement" is displayed on the Main menu
             "name": "Movement",
             "contents": [
               // Nested menu
-              {                
-                // "category" is a Menu item 
+              {
+                // "category" is a Menu item
                 "kind": "category",
                 // The words "Forward or backward" are displayed on the Nested menu
                 "name": "Forward or backward",
                 "contents": [
                   {
                     // "block" creates a block on the screen
-                    "kind": "block", 
+                    "kind": "block",
                     // "typeForwardBackward" is the block name found in a .js file
                     "type": "typeForwardBackward"
                   }
                 ]
               },
               // Nested menu
-              {                
+              {
                 // "category" is a Menu item
                 "kind": "category",
                 // The words "Turn left or right" are displayed on the Nested menu
