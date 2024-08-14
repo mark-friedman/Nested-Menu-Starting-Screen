@@ -36,8 +36,11 @@ Blockly.defineBlocksWithJsonArray
 
 // Used to generate and run JavaScript
 javascript.javascriptGenerator.forBlock['typeForwardBackward'] = function(block, generator) {
-  var dropdown_forwardbackward = block.getFieldValue('nameForwardBackward');
+  const dropdown_forwardbackward = block.getFieldValue('nameForwardBackward');
   // TODO: Assemble javascript into code variable.
-  var code = '...\n';
-  return code;
+  return dropdown_forwardbackward === 'nameMoveForward'
+         ? 'fSinCosArrowMovement(0, -1);\n'
+         : dropdown_forwardbackward === 'nameMoveBackward'
+           ? 'fSinCosArrowMovement(0, 1);\n'
+           : '\n';
 };

@@ -47,12 +47,11 @@ Blockly.defineBlocksWithJsonArray
 // Used to generate and run JavaScript
 javascript.javascriptGenerator.forBlock['typeStartingScreen'] = function(block, generator) {
   // Put initialization blocks here
-  var field_initializationblocks = block.getFieldValue('nameInitializationBlocks');
-  var statements_initializationblocks = generator.statementToCode(block, 'nameInitializationBlocks');
+  const initializationCode = generator.statementToCode(block, 'nameInitializationBlocks');
   // Put run blocks here
-  var field__runblocks_ = block.getFieldValue('nameRunBlocks');
-  var statements_runblocks_ = generator.statementToCode(block, 'nameRunBlocks ');
+  const runCode = generator.statementToCode(block, 'nameRunBlocks ');
   // TODO: Assemble javascript into code variable.
-  var code = '...\n';
+  const code = initializationCode + '\n\n' + runCode;
+  console.log(code);
   return code;
 };
