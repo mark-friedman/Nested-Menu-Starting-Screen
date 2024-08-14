@@ -65,116 +65,116 @@ document.addEventListener("click", e =>
 );
 //------------------------------
 //#region === document.addEventListener('keydown'
-document.body.addEventListener("keydown", e =>
-  // --- The "keydown" event fires for all keybpoard entries.
-  {
-    let lCarCenterX;
-    let lCarCenterY;
-    let lSignX = 0;
-    let lSignY = 0;
-    e.preventDefault();
-    if(glTimeoutIsOccuringFlag === false) {
-      switch(e.key) {
-        //#region --- default
-         default:
-          break;
-        //#endregion --- default
-        //#region --- enter = Set a specified distance movement
-        case 'Enter':
-          glDistanceIncrement = glSpecifiedDistanceIncrement;
-          glSpecifiedDistanceIncrement = '';
-          glSpecifiedDegrees = '';
-          break;
-        //#endregion --- enter = Set a specified distance movement
-        //#region --- r = Rotate the specified degrees
-        case 'r':
-          fRotate();
-          // fRotate when finished will reset:
-              glSpecifiedDistanceIncrement = '';
-              glSpecifiedDegrees = '';
-          break;
-        //#endregion --- r = Rotate the specified degrees
-        //#region --- s = Spin 360 degrees
-        case 's':
-          fSpinCar360Deg();
-          break;
-        //#endregion --- s = Spin 360 degrees
-        //#region --- f = Move forward to edge
-        case 'f':
-          fMoveForwardToEdge();
-          break;
-        //#endregion --- f = Move forward to edge
-        //#region --- b = Move backward to edge
-        case 'b':
-          fMoveBackwardToEdge();
-          break;
-        //#endregion --- b = Move backward to edge
-        //#region --- ArrowUp = Move forward the specified distance
-        case 'ArrowUp':
-          lSignX = 0;
-          lSignY = -1;
-          fSinCosArrowMovement(lSignX, lSignY);
-          break;
-        //#endregion  --- ArrowUp = Move forward the specified distance
-        //#region --- ArrowDown = Move backward the specified distance
-        case 'ArrowDown':
-          lSignX = 0;
-          lSignY = 1;
-          fSinCosArrowMovement(lSignX, lSignY);
-          break;
-        //#endregion --- ArrowDown = Move backward the specified distance
-        //#region --- ArrowLeft = Move left the specified distance
-        case 'ArrowLeft':
-          lSignX = -1;
-          lSignY = 0;
-          fSinCosArrowMovement(lSignX, lSignY);
-          break;
-        //#endregion --- ArrowLeft = Move left the specified distance
-        //#region --- ArrowRight = Move right the specified distance
-        case 'ArrowRight':
-          lSignX = 1;
-          lSignY = 0;
-          fSinCosArrowMovement(lSignX, lSignY);
-          break;
-        //#endregion --- ArrowRight = Move right the specified distance
-        //#region --- -, 1, 2, ... 9 = Set specified angle in degrees --- or --- Set specified distance increment
-        case '-':
-          glSpecifiedDegrees = '-';
-          glSpecifiedDistanceIncrement = '-';
-          break;
-        case '0':
-        case '1':
-        case '2':
-        case '3':
-        case '4':
-        case '5':
-        case '6':
-        case '7':
-        case '8':
-        case '9':
-          if(glSpecifiedDistanceIncrement < 1) {
-            glSpecifiedDistanceIncrement = '';
-          }
-          glSpecifiedDistanceIncrement += e.key;
-          // if(glSpecifiedDistanceIncrement < )
-          //---
-          if(glSpecifiedDegrees === 0) {
-            glSpecifiedDegrees = '';
-          }
-          glSpecifiedDegrees += e.key;
-          let lAbs = Math.abs(glSpecifiedDegrees)
-          if(lAbs >= 360) {
-            glSpecifiedDegrees = e.key;
-          }
-          else if(lAbs === 360) {
-            glSpecifiedDegrees = 0;
-          }
-          break;
-        //#endregion --- -, 1, 2, ... 9 = Set specified angle in degrees --- or --- Set specified distance increment
-      }// --- switch(e.key)
-    }// --- if(glTimeoutIsOccuringFlag
-  }// --- =>
-)// --- document.body.addEventListener("keydown"
+// document.body.addEventListener("keydown", e =>
+//   // --- The "keydown" event fires for all keybpoard entries.
+//   {
+//     let lCarCenterX;
+//     let lCarCenterY;
+//     let lSignX = 0;
+//     let lSignY = 0;
+//     e.preventDefault();
+//     if(glTimeoutIsOccuringFlag === false) {
+//       switch(e.key) {
+//         //#region --- default
+//          default:
+//           break;
+//         //#endregion --- default
+//         //#region --- enter = Set a specified distance movement
+//         case 'Enter':
+//           glDistanceIncrement = glSpecifiedDistanceIncrement;
+//           glSpecifiedDistanceIncrement = '';
+//           glSpecifiedDegrees = '';
+//           break;
+//         //#endregion --- enter = Set a specified distance movement
+//         //#region --- r = Rotate the specified degrees
+//         case 'r':
+//           fRotate();
+//           // fRotate when finished will reset:
+//               glSpecifiedDistanceIncrement = '';
+//               glSpecifiedDegrees = '';
+//           break;
+//         //#endregion --- r = Rotate the specified degrees
+//         //#region --- s = Spin 360 degrees
+//         case 's':
+//           fSpinCar360Deg();
+//           break;
+//         //#endregion --- s = Spin 360 degrees
+//         //#region --- f = Move forward to edge
+//         case 'f':
+//           fMoveForwardToEdge();
+//           break;
+//         //#endregion --- f = Move forward to edge
+//         //#region --- b = Move backward to edge
+//         case 'b':
+//           fMoveBackwardToEdge();
+//           break;
+//         //#endregion --- b = Move backward to edge
+//         //#region --- ArrowUp = Move forward the specified distance
+//         case 'ArrowUp':
+//           lSignX = 0;
+//           lSignY = -1;
+//           fSinCosArrowMovement(lSignX, lSignY);
+//           break;
+//         //#endregion  --- ArrowUp = Move forward the specified distance
+//         //#region --- ArrowDown = Move backward the specified distance
+//         case 'ArrowDown':
+//           lSignX = 0;
+//           lSignY = 1;
+//           fSinCosArrowMovement(lSignX, lSignY);
+//           break;
+//         //#endregion --- ArrowDown = Move backward the specified distance
+//         //#region --- ArrowLeft = Move left the specified distance
+//         case 'ArrowLeft':
+//           lSignX = -1;
+//           lSignY = 0;
+//           fSinCosArrowMovement(lSignX, lSignY);
+//           break;
+//         //#endregion --- ArrowLeft = Move left the specified distance
+//         //#region --- ArrowRight = Move right the specified distance
+//         case 'ArrowRight':
+//           lSignX = 1;
+//           lSignY = 0;
+//           fSinCosArrowMovement(lSignX, lSignY);
+//           break;
+//         //#endregion --- ArrowRight = Move right the specified distance
+//         //#region --- -, 1, 2, ... 9 = Set specified angle in degrees --- or --- Set specified distance increment
+//         case '-':
+//           glSpecifiedDegrees = '-';
+//           glSpecifiedDistanceIncrement = '-';
+//           break;
+//         case '0':
+//         case '1':
+//         case '2':
+//         case '3':
+//         case '4':
+//         case '5':
+//         case '6':
+//         case '7':
+//         case '8':
+//         case '9':
+//           if(glSpecifiedDistanceIncrement < 1) {
+//             glSpecifiedDistanceIncrement = '';
+//           }
+//           glSpecifiedDistanceIncrement += e.key;
+//           // if(glSpecifiedDistanceIncrement < )
+//           //---
+//           if(glSpecifiedDegrees === 0) {
+//             glSpecifiedDegrees = '';
+//           }
+//           glSpecifiedDegrees += e.key;
+//           let lAbs = Math.abs(glSpecifiedDegrees)
+//           if(lAbs >= 360) {
+//             glSpecifiedDegrees = e.key;
+//           }
+//           else if(lAbs === 360) {
+//             glSpecifiedDegrees = 0;
+//           }
+//           break;
+//         //#endregion --- -, 1, 2, ... 9 = Set specified angle in degrees --- or --- Set specified distance increment
+//       }// --- switch(e.key)
+//     }// --- if(glTimeoutIsOccuringFlag
+//   }// --- =>
+// )// --- document.body.addEventListener("keydown"
 //#endregion === document.addEventListener('DOMContentLoaded'
 //------------------------------
 //++++++++++++++++++++++++++++++
