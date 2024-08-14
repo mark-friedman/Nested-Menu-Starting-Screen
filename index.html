@@ -12,12 +12,20 @@
     <script src="Simulator.js"></script>
     <script src="ForwardBackward.js"></script>
     <script src="TurnLeftRight.js"></script>
+    <script>
+      function doMove() {
+          // Get the JavaScript code for the workspace
+          const jsCode = javascript.javascriptGenerator.workspaceToCode(workspace);
+          // Run the JavaScript code in the simulator
+          eval(jsCode);
+      }
+    </script>
   </head>
   <body>
     <main>
       <div id="blocksAndButtons" class="split left">
         <div id="blocklyDiv"></div>
-        <button class="button mdl-color--red-500">Move</button>
+        <button class="button mdl-color--red-500" onclick="doMove()">Move</button>
       </div>
       <div id="canvasContainer" class="split right">
         <canvas id="canvas" width="900" height="520"></canvas>
